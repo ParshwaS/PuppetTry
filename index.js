@@ -3,7 +3,9 @@
 	const bodyparser = require('body-parser')
 	const express = require('express')
 	const app = express()
-	const browser = await puppeteer.launch();
+	const browser = await puppeteer.launch({
+		args: ['--no-sandbox']
+	});
 	var pages = {}
 
 	app.use(bodyparser.json())
