@@ -4,7 +4,8 @@
 	const express = require('express')
 	const app = express()
 	const browser = await puppeteer.launch({
-		args: ['--no-sandbox']
+		headless: true,
+		args: ["--no-sandbox"]
 	});
 	var pages = {}
 
@@ -82,5 +83,7 @@
 		})();
 	})
 
-	app.listen(5000)
+	app.listen(process.env.PORT).then(()=>{
+		console.log("Server Started On Port "+process.env.PORT);
+	})
 })();
